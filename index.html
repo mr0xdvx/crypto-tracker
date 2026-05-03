@@ -1,41 +1,68 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>Crypto Tracker</title>
-<style>
-body {
-  background: black;
-  color: white;
-  text-align: center;
-  font-family: Arial;
-}
-.card {
-  background: #111;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
-}
-</style>
+  <title>Crypto Tracker</title>
+
+  <style>
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+      font-family: Arial;
+    }
+
+    .box {
+      margin-top: 50px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 10px;
+      border: none;
+      background-color: #00c853;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00e676;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>🚀 Crypto Price Tracker</h1>
+  <div class="box">
+    <h1>🚀 Crypto Tracker</h1>
 
-<div class="card" id="btc">Loading BTC...</div>
-<div class="card" id="eth">Loading ETH...</div>
+    <h2>Coins</h2>
+    <ul>
+      <li>Bitcoin (BTC)</li>
+      <li>Ethereum (ETH)</li>
+      <li>Solana (SOL)</li>
+    </ul>
 
-<script>
-async function getPrices() {
-  let res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd");
-  let data = await res.json();
+    <h2>Prices</h2>
+    <p id="btc">BTC Price: $65000</p>
+    <p id="eth">ETH Price: $3200</p>
+    <p id="sol">SOL Price: $150</p>
 
-  document.getElementById("btc").innerText = "BTC: $" + data.bitcoin.usd;
-  document.getElementById("eth").innerText = "ETH: $" + data.ethereum.usd;
-}
+    <button onclick="updatePrices()">Refresh Prices</button>
+  </div>
 
-getPrices();
-</script>
+  <script>
+    function updatePrices() {
+      document.getElementById("btc").innerText = "BTC Price: $" + (60000 + Math.floor(Math.random()*5000));
+      document.getElementById("eth").innerText = "ETH Price: $" + (3000 + Math.floor(Math.random()*500));
+      document.getElementById("sol").innerText = "SOL Price: $" + (100 + Math.floor(Math.random()*50));
+    }
+  </script>
 
 </body>
 </html>
