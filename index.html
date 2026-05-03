@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Crypto Tracker</title>
+<style>
+body {
+  background: black;
+  color: white;
+  text-align: center;
+  font-family: Arial;
+}
+.card {
+  background: #111;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🚀 Crypto Price Tracker</h1>
+
+<div class="card" id="btc">Loading BTC...</div>
+<div class="card" id="eth">Loading ETH...</div>
+
+<script>
+async function getPrices() {
+  let res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd");
+  let data = await res.json();
+
+  document.getElementById("btc").innerText = "BTC: $" + data.bitcoin.usd;
+  document.getElementById("eth").innerText = "ETH: $" + data.ethereum.usd;
+}
+
+getPrices();
+</script>
+
+</body>
+</html>
